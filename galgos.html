@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta</title>
+    <link rel="stylesheet" href="galgos.css">
+    <!--Agregacion de Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abril Fatface' rel='stylesheet'>
+</head>
+<body style="background-color: rgb(23, 28, 39);" onload="startTime()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="imagenes/logo1.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
+            XP CASINO
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#depositarModal">Depositar</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="depositarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ingresar dinero</h5>
+                            </div>
+                            <div class="modal-body">
+                            <input type="number" class="inpuntModal"> €
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-success">Confirmar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#retirarModal">Retirar</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="retirarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Retirar dinero</h5>
+                            </div>
+                            <div class="modal-body">
+                            <input type="number" class="inpuntModal"> €
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-success">Confirmar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="saldo">
+                        Saldo: 0 €
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        Pablo
+                        <img src="imagenes/exit.png" id="fotoExit" alt="exit">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <p id="clock"></p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="contenedor">
+        <div class="izquierdo">
+            <div id="cabecera1">
+                <h2>Carrera de galgos</h2>
+            </div>
+
+            <table id="tablaGalgos">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Dorsal</th>
+                        <th>Cuota</th>
+                        <th>Funcion</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <div id="contenedorApuesta">
+                <label for="valorApuesta">Cantidad a apostar: </label> <input type="number" id="valorApuesta">
+            </div>
+        </div>
+        <div class="derecho">
+            <div id="cabecera2">
+                <div>20/11/2023</div>
+                <div>Birmingham</div>
+                <div>11:30</div>
+            </div>
+
+            <div id="contenedorTablas">
+                <table id="tablaCarrera">
+                    <thead class="thead-dark">
+                        <tr id="titulo">
+                            <th colspan="3">Clasificacion</th>
+                        </tr>
+                        <tr>
+                            <th>Dorsal</th>
+                            <th>Progreso</th>
+                            <th>Meta</th>
+                        </tr>
+                    </thead>
+                </table>
+        
+                <table id="tablaPremios">
+                    <thead class="thead-dark">
+                        <tr id="titulo">
+                            <th colspan="3">Apuestas realizadas</th>
+                        </tr>
+                        <tr>
+                            <th>Dorsal</th>
+                            <th>Apuesta</th>
+                            <th>Ganancia</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div id="contenedorFuncionalidad">
+                <div id="contenedorDatos">
+                    <label for="saldo" id="saldoDatos">Saldo: 0€</label><br>
+                    <label for="apuesta" id="apuestaLabel">Apuesta total: 0€</label>
+                    <label for="saldo" id="ganancia">Ganancia: 0€</label>
+                </div>
+            
+                <div id="contenedorBotones">
+                    <button type="button" id="botonBorrar">Borrar apuestas</button>
+                    <button type="button" id="botonPlay">Realizar carrera <img src="imagenes/playBoton.png" id="playBoton"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="galgos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
